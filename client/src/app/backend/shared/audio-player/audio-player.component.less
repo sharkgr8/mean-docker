@@ -1,0 +1,29 @@
+*,
+*:after,
+*:before {
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-font-smoothing:antialiased;
+	-moz-font-smoothing:antialiased;
+	-o-font-smoothing:antialiased;
+	font-smoothing:antialiased;
+	text-rendering:optimizeLegibility;
+}
+#audio-player {
+  display: block;
+  margin-top: 10px;
+}
+#playable {cursor: pointer;}
+#playable .control { opacity: 0; /* transition: opacity .2s linear; */ }
+#playable.not-started .play, #playable.paused .play { opacity: 1; }
+#playable.playing .pause { opacity: 1; }
+#playable.ended .stop {opacity: 1; }
+#playable.precache-bar .done {opacity: 0; }
+#playable.not-started .progress-bar, #playable.ended .progress-bar { display: none; }
+#playable.ended .progress-track { stroke-opacity: 1; }
+#playable .progress-bar,
+#playable .precache-bar {
+	stroke-dasharray: 298.1371428256714;
+	stroke-dashoffset: 298.1371428256714;
+}

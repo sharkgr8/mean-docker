@@ -1,0 +1,24 @@
+<div id="audio-player">
+<audio #audioObj src="" preload="none" id="listen"></audio>
+
+<svg id="playable" #playObj viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" width="80%" height="80%" class="not-started">
+	<g class="shape">
+		<circle class="progress-track" cx="50" cy="50" r="47.45" stroke="#000000" stroke-opacity="0.25" stroke-linecap="round" fill="none" stroke-width="5" />
+		<circle class="precache-bar" #precache cx="50" cy="50" r="47.45" stroke="#000000" stroke-opacity="0.25" stroke-linecap="round" fill="none" stroke-width="5" transform="rotate(-90 50 50)" />
+		<circle class="progress-bar" #progress cx="50" cy="50" r="47.45" stroke="#000000" stroke-opacity="1" stroke-linecap="round" fill="none" stroke-width="5" transform="rotate(-90 50 50)" />
+	</g>
+	<circle class="controls" #controlsObj (click)="controlListener($event)" cx="50" cy="50" r="45" stroke="none" fill="#000000" opacity="0.0" pointer-events="all" />
+	<g class="control pause">
+		<line x1="40" y1="35" x2="40" y2="65" stroke="#000000" fill="none" stroke-width="1" stroke-linecap="round" />
+		<line x1="60" y1="35" x2="60" y2="65" stroke="#000000" fill="none" stroke-width="1" stroke-linecap="round" />
+	</g>
+	<g class="control play">
+		<line x1="45" y1="35" x2="45" y2="65" stroke="#000000" fill="none" stroke-width="1" stroke-linecap="round" />
+		<line x1="45" y1="65" x2="65" y2="50" stroke="#000000" fill="none" stroke-width="1" stroke-linecap="round" />
+		<line x1="65" y1="50" x2="45" y2="35" stroke="#000000" fill="none" stroke-width="1" stroke-linecap="round" />
+	</g>
+	<g class="control stop">
+		<rect x="35" y="35" width="30" height="30" stroke="#000000" fill="none" stroke-width="1" />
+	</g>
+</svg>
+</div>

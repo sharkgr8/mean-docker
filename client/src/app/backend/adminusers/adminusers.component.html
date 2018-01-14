@@ -1,0 +1,44 @@
+<div class="container">
+<h3>Admin Users</h3>
+<!-- Bootstrap Card -->
+<div class="row" *ngIf="users.length > 0">
+  <div class="col s12">
+      <mz-input-container>
+          <i mz-icon-mdi mz-input-prefix
+            [icon]="'magnify'" [size]="small"></i>
+          <input mz-input id="search" placeholder="Type to filter the name column..."  length="50" (keyup)="updateFilter($event)" type="text" />
+      </mz-input-container>
+    <ngx-datatable #table class="material" [columnMode]="'force'" [rows]="users" [headerHeight]="50" [footerHeight]="50"
+      [rowHeight]="40" [selectionType]="'single'" (select)='onSelect($event)' [limit]="10">
+
+      <ngx-datatable-column prop="name"></ngx-datatable-column>
+
+      <ngx-datatable-column prop="admin" name="isAdmin">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          <i mz-icon-mdi
+            [icon]="value ? 'check' : 'close'"
+            [size]="'24px'">
+          </i>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column prop="meta.email" name="Email"></ngx-datatable-column>
+      <ngx-datatable-column prop="created_at" name="Created On">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{value | amDateFormat: 'DD-MM-YYYY h:mm a'}}
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+
+  <!-- <div class="col l4 s12 card">
+    <app-adminusers-form [isEditing]="isEditing" [user]="selectedUser" [userId]="selectedUserId" (onUpdate)="refresh($event)"></app-adminusers-form>
+  </div> -->
+</div>
+<div [style.margin-right.px]="10" class="col-12 error" *ngIf="users.length === 0">
+  Sorry! No Users Created.
+</div>
+<div class="fixed-action-btn">
+    <a (click)='add()' class="btn-floating btn-large waves-effect waves-light orange"><i mz-icon-mdi [icon]="'plus'" [size]="'36px'">Add</i></a>
+  </div>
+</div>

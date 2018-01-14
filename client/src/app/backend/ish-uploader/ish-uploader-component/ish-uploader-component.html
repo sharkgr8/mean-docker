@@ -1,0 +1,60 @@
+<ng-container *ngTemplateOutlet="getTemplate()"></ng-container>
+
+<!-- Single File Uploader Starts -->
+<ng-template #single>
+  <div class="file-field input-field" *ngIf="!isLoading">
+    <div class="btn">
+      <span>File</span>
+      <input id="ish-file-selector"  #ishFileSelector type="file">
+    </div>
+    <div class="file-path-wrapper">
+      <input id="filepath" class="file-path validate" type="text">
+    </div>
+  </div>
+</ng-template>
+<!-- Single File Uploader Ends -->
+
+<!-- Multiple Files Uploader Starts -->
+<ng-template #multiple>
+  <div class="dropify-wrapper" #ishDropSelector>
+    <div class="dropify-message">
+      <i class="file-icon" mz-icon-mdi [icon]="'cloud-upload'" [size]="'48px'"></i>
+      <p class="center-align">Drag and drop a file here or click</p>
+    </div>
+    <input type="file" id="input-file-now" class="dropify">
+  </div>
+</ng-template>
+<!-- Multiple Files Uploader Ends -->
+
+<!-- Uploaded Files List -->
+<div class="row" *ngIf="isLoading">
+  <ul class="collection col s12 l5">
+    <li class="collection-item avatar" *ngFor="let file of files">
+      <div class="c100 p{{file.progress() | formatUploadProgress}} small orange mysize">
+        <span>{{file.progress() | formatUploadProgress}}%</span>
+        <div class="slice">
+          <div class="bar"></div>
+          <div class="fill"></div>
+        </div>
+      </div>
+      <span class="title">{{file.name}}</span>
+      <p>{{file.size | formatFileSize}}</p>
+      <p *ngIf="file.isUploading()">{{file.timeRemaining() | formatUploadTime}} remaining</p>
+      <p *ngIf="file.error" class="error"><i mz-icon-mdi [icon]="'alert-circle-outline'" [size]="'24px'"></i> Error Occurred while uploading.</p>
+      <div class="secondary-content">
+        <a *ngIf="!file.isUploaded && !file.error" href="javascript:void(0);" (click)="file.paused ? file.resume() : file.pause()">
+          <i mz-icon-mdi [icon]="file.paused ? 'play-circle' : 'pause-circle'" [size]="'36px'"></i>
+        </a>
+        <a *ngIf="file.isComplete()" href="javascript:void(0);">
+          <i mz-icon-mdi class="green-text" [icon]="'check-circle'" [size]="'36px'"></i>
+        </a>
+        <a *ngIf="file.error" href="javascript:void(0);" (click)="file.retry()">
+          <i mz-icon-mdi [icon]="'refresh'" [size]="'36px'"></i>
+        </a>
+        <a href="javascript:void(0);" (click)="file.cancel()">
+          <i mz-icon-mdi [icon]="'close-circle'" [size]="'36px'"></i>
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>

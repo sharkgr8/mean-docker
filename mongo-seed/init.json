@@ -1,0 +1,14 @@
+[
+    {
+      "name": "Administrator",
+      "username": "admin",
+      "password": "a",
+      "admin": true,
+      "meta": {
+        "email": "shariqueit@yahoo.com",
+        "phone": "8904401804"
+      },
+      "created_at": "2017-12-10T11:30:00",
+      "updated_at": "2017-12-10T11:30:00"  
+    }
+]

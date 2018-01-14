@@ -1,0 +1,116 @@
+<mz-modal #userFormModal [fullscreen]="true" [options]="modalOptions">
+  <mz-modal-header>
+    <h4>{{ isEditing === false ? 'Add':'Edit'}} User <a mz-modal-close [style]="'float: right'"><i mz-icon-mdi
+      [align]="'right'"
+      [icon]="'close'"
+      [size]="'48px'"></i></a></h4>
+
+  </mz-modal-header>
+  <mz-modal-content>
+<div class="row">
+  <form class="col s12" [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="row">
+      <mz-input-container class="col s12">
+        <input mz-input mz-validation required
+          id="input-name"
+          formControlName="name"
+          type="text"
+          [errorMessageResource]="errorMessageResources.name"
+          [label]="'Name'" />
+      </mz-input-container>
+    </div>
+    <div class="row">
+      <mz-input-container class="col s12">
+        <input mz-input mz-validation required
+          id="input-username"
+          formControlName="username"
+          type="text"
+          [errorMessageResource]="errorMessageResources.username"
+          [label]="'Username'" />
+      </mz-input-container>
+    </div>
+    <div class="row" *ngIf="isEditing">
+      <mz-checkbox-container class="col s12">
+        <input mz-checkbox
+          id="checkbox-form-state"
+          type="checkbox"
+          formControlName="checkPassword"
+          [label]="'Do you want to change the password?'">
+      </mz-checkbox-container>
+    </div>
+    <div class="row">
+      <mz-input-container class="col s12">
+        <input mz-input mz-validation required
+          id="input-password"
+          formControlName="password"
+          type="password"
+          [errorMessageResource]="errorMessageResources.password"
+          [label]="'Password'" />
+      </mz-input-container>
+    </div>
+    <div class="row">
+      <mz-input-container class="col s12">
+        <input mz-input mz-validation required
+          id="input-confirmPassword"
+          formControlName="confirmPassword"
+          type="password"
+          [errorMessageResource]="errorMessageResources.confirmPassword"
+          [label]="'Re-Password'" />
+      </mz-input-container>
+    </div>
+    <div formGroupName="meta">
+      <div class="row">
+        <mz-input-container class="col s12">
+          <input mz-input mz-validation required
+            id="input-email"
+            formControlName="email"
+            type="text"
+            [errorMessageResource]="errorMessageResources.email"
+            [label]="'Email'" />
+        </mz-input-container>
+      </div>
+      <div class="row">
+        <mz-input-container class="col s12">
+          <input mz-input mz-validation
+            id="input-phone"
+            formControlName="phone"
+            type="text"
+            [errorMessageResource]="errorMessageResources.phone"
+            [label]="'Phone'" />
+        </mz-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <mz-checkbox-container class="col s2">
+        <input mz-checkbox
+          id="checkbox-admin"
+          formControlName="admin"
+          type="checkbox"
+          [filledIn]="false"
+          [label]="'Is user superadmin?'">
+      </mz-checkbox-container>
+    </div>
+    <div class="row" style="margin-top: 1em">
+      <button type="submit" [disabled]="userForm.pristine || userForm.invalid" class="btn btn-success">Save</button> &nbsp;
+      <button type="reset" (click)="revert()" [disabled]="userForm.pristine" class="btn btn-danger">Revert</button> &nbsp;
+      <button type="button" mz-button mz-modal-close>Close</button>
+
+      <button type="button" (click)="add()" *ngIf="isEditing===true"  class="btn btn-danger right yellow-text">Add User</button>
+     <button type="button" (click)="bottomSheetModal.open()" *ngIf="isEditing===true" class="btn btn-danger red right">Delete User</button>
+    </div>
+  </form>
+</div>
+</mz-modal-content>
+</mz-modal>
+<mz-modal #bottomSheetModal [fixedFooter]="true" [bottomSheet]="true" [options]="modalOptions">
+  <mz-modal-header>
+    Delete Confirmation
+  </mz-modal-header>
+  <mz-modal-content>
+    Are you sure about the deletion of the user?
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button mz-button [flat]="true" mz-modal-close>Disagree</button>
+    <button mz-button [flat]="true" (click)="delete()" mz-modal-close>Agree</button>
+  </mz-modal-footer>
+</mz-modal>

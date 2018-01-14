@@ -1,0 +1,42 @@
+version: '3.3' # specify docker-compose version
+
+# Define the services/containers to be run
+services:
+  # web: # name of the first service
+  #   build: client # specify the directory of the Dockerfile
+  #   restart: always
+  #   volumes:
+  #     - ./client:/usr/src/app/web
+  #     - uploaddata:/data/uploads
+  #   ports:
+  #     - "80:80" # specify port forewarding
+
+  api: #name of the second service
+    build: server # specify the directory of the Dockerfile
+    ports:
+      - "3000:3000" #specify ports forewarding
+    #   - "9229:9229" #for remote debugging
+    # command: npm run debug #for remote debugging
+    restart: always
+    volumes:
+      #- ./server:/usr/src/app/api
+      - uploaddata:/data/uploads
+      - tmpdata:/data/uploads/tmp
+    links:
+      - mongodb # link this service to the database service
+
+  mongodb: # name of the third service
+    image: mongo # specify image to build container from
+    restart: always
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - "27017:27017" # specify port forewarding
+  # mongo-seed:
+  #   build: ./mongo-seed
+  #   links:
+  #     - mongodb
+volumes:
+  mongodata:
+  uploaddata:
+  tmpdata:

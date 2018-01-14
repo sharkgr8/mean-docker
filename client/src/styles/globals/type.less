@@ -1,0 +1,187 @@
+/*
+	TYPE
+	=======================================
+ */
+
+// @font-face {
+//   	font-family: 'Montserrat';
+//   	src: url('../fonts/montserrat/montserrat-regular-webfont.eot'); /* IE9 Compat Modes */
+//   	src: url('../fonts/montserrat/montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+//        	 url('../fonts/montserrat/montserrat-regular-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+//          url('../fonts/montserrat/montserrat-regular-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+//          url('../fonts/montserrat/montserrat-regular-webfont.ttf')  format('truetype'); /* Safari, Android, iOS */
+//    	font-weight: 400;
+// 	font-style: normal;
+// }
+
+// @font-face {
+//   	font-family: 'Montserrat';
+//   	src: url('../fonts/montserrat/montserrat-bold-webfont.eot'); /* IE9 Compat Modes */
+//   	src: url('../fonts/montserrat/montserrat-bold-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+//        	 url('../fonts/montserrat/montserrat-bold-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+//          url('../fonts/montserrat/montserrat-bold-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+//          url('../fonts/montserrat/montserrat-bold-webfont.ttf')  format('truetype'); /* Safari, Android, iOS */
+//    	font-weight: 700;
+// 	font-style: normal;
+// }
+
+// @font-face {
+//   	font-family: 'Montserrat';
+//   	src: url('../fonts/montserrat/montserrat-light-webfont.eot'); /* IE9 Compat Modes */
+//   	src: url('../fonts/montserrat/montserrat-light-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+//        	 url('../fonts/montserrat/montserrat-light-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+//          url('../fonts/montserrat/montserrat-light-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+//          url('../fonts/montserrat/montserrat-light-webfont.ttf')  format('truetype'); /* Safari, Android, iOS */
+//    	font-weight: 300;
+// 	font-style: normal;
+// }
+
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,700';
+
+.link-decorated{
+	text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6,{
+  font-weight: 400;
+  line-height: inherit;
+  // margin: 0 0 1em;
+}
+.heading-1{
+	font-size: 1.85em;
+	text-align: center;
+	margin-bottom: 1.2em;
+	// &:after{
+	// 	content: '';
+	// 	display: block;
+	// 	width: 3.45em;
+	// 	height: 1px;
+	// 	background-color: @base-50;
+	// 	margin: .6em auto;
+	// }
+	@media (min-width: @screen-sm-min){
+		font-size: 2.5em;
+	}
+}
+.heading-2{
+	font-size: 1.428em;
+	@media (min-width: @screen-sm-min){
+		font-size: 1.87em;
+	}
+}
+.heading-3{
+	font-size: 1.5em;
+	margin-bottom: 1.5em;
+}
+.heading-4{
+	font-size: 1.25em;
+	font-weight: @fw-bold;
+}
+.heading-5{
+	font-size: .75em;
+}
+.heading-6{
+	font-size: 1em;
+}
+.heading-icon{
+	[class^="bmicon"], [class*=" bmicon-"]{
+		margin: -3px 6px 0 0;
+	}
+}
+p{
+	&:last-child{
+		margin-bottom: 0;
+	}
+}
+
+.lead{
+	font-size: 1.25em;
+}
+
+.text-xs{
+	font-size: .75em;
+}
+
+.more-link{
+	font-size: 12px;
+	font-weight: @fw-bold;
+}
+
+ul.reset-ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	li{
+		margin: 0;
+		padding: 0;
+	}
+}
+
+/* Text Colors -----------------*/
+h1, h2, h3, h4, h5, h6, p, span, strong, div{
+	&.base-110{
+		color: @base-110;
+	}
+	&.base-50{
+		color: @base-50;
+	}
+	&.base-20{
+		color: @base-20;
+	}
+	&.primary{
+		color: @primary;
+	}
+	&.secondary{
+		color: @secondary;
+	}
+	&.comp1{
+		color: @comp1;
+	}
+	&.comp2{
+		color: @comp2;
+	}
+	&.light{
+		color: @light;
+	}
+}
+/* Labels -----------------*/
+.label{
+	border-radius: 0 6px 6px 0;
+	border: 1px solid transparent;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 1.42857143;
+	min-width: 110px;
+	padding: 3px 16px;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	font-weight: @fw-light;
+
+	&-pending{
+		//background-color: #67cac1;
+		color: @primary;
+		font-size: 0.875em;
+		span{
+			margin-right: 0.75em;
+		}
+	}
+
+	&-processing{
+		background-color: @secondary;
+	}
+
+	&-completed{
+		background-color: #3ddc5f;
+	}
+
+	&-onhold{
+		background-color: #5ea6dc;
+	}
+
+	&-canceled,
+	&-declined{
+		background-color: #e67066;
+	}
+}

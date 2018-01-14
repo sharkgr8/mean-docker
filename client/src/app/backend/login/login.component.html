@@ -1,0 +1,88 @@
+<div id="login-page" class="row">
+  <div class="col s12 z-depth-4 l3 card-panel center-align">
+    <form class="login-form" (ngSubmit)="f.form.valid && login()" #f="ngForm">
+      <div class="row">
+        <div class="input-field col s12 center">
+          <img src="assets/img/login-logo.png" alt="" class="circle responsive-img valign profile-image-login">
+          <p class="center login-form-text">Ishaatulhaq Admin</p>
+        </div>
+      </div>
+      <div *ngIf="error" class="row err-message">{{error}}</div>
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="mdi-social-person-outline prefix"></i>
+          <input id="username" type="text" name="username" class="validate" [(ngModel)]="model.username" [ngClass]="{ 'invalid': f.submitted && !username.valid }"
+          #username="ngModel" required>
+          <label for="username" class="center-align" data-error="Username is required">Username</label>
+        </div>
+      </div>
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="mdi-action-lock-outline prefix"></i>
+          <input id="password" type="password" class="validate" name="password" [ngClass]="{ 'invalid': f.submitted && !password.valid }" [(ngModel)]="model.password"
+          #password="ngModel" required>
+          <label for="password" data-error="Password is required">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m12 l12  login-text">
+            <input type="checkbox" id="remember-me" />
+            <label for="remember-me">Remember me</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <button [disabled]="loading" class="btn waves-effect waves-light">Login</button>
+        </div>
+      </div>
+
+    </form>
+
+    <div id="preloader" *ngIf="loading">
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>

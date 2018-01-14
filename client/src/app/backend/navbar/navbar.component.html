@@ -1,0 +1,30 @@
+<mz-sidenav *ngIf="isLoggedIn" #sidenav [id]="'sidenav'" [backgroundClass]="'sidenav-background'" [closeOnClick]="true"
+  [collapseButtonId]="'btn-sidenav'" [fixed]="true">
+
+  <mz-sidenav-header class="sidenav-header">
+    <h4>
+      <a [routerLink]="'/admin'">Ishaatulhaq Admin</a>
+    </h4>
+    <h5 class="center-align white-text">Welcome {{loggedInUsername}}</h5>
+    <mz-sidenav-link>
+      <a class="waves-effect white-text" href="/admin" (click)="logout()">
+        <i mz-icon-mdi [icon]="'logout-variant'" class="lighten-5"></i>Logout
+      </a>
+    </mz-sidenav-link>
+  </mz-sidenav-header>
+
+  <mz-sidenav-link>
+    <a class="waves-effect white-text" routerLink="adminusers" routerLinkActive="active">
+      <i mz-icon-mdi [icon]="'account-multiple'" class="lighten-5"></i>Admin Users
+    </a>
+  </mz-sidenav-link>
+  <mz-sidenav-link>
+    <a class="waves-effect white-text" routerLink="audio" routerLinkActive="active">
+      <i mz-icon-mdi [icon]="'library-music'" class="lighten-5"></i>Audio
+    </a>
+  </mz-sidenav-link>
+</mz-sidenav>
+
+<button mz-button class="sidenav-button hide-on-large-only orange" id="btn-sidenav" [float]="true" [large]="true">
+  <i mz-icon-mdi [icon]="'menu'"></i>
+</button>

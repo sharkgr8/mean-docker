@@ -1,0 +1,176 @@
+
+// Headings
+// @heading-vertical-margin:       0px;
+
+//Colors
+@text-black:                rgb(39, 39, 39);
+@text-black-2:              rgb(54, 54, 54);
+@text-gray:                 rgb(116, 116, 116);
+@text-orange:               rgb(209, 122, 37);
+@link-orange:               rgb(253, 185, 19);
+@link-disabled:             rgb(206, 206, 206);
+@text-red:                  rgb(217, 0, 0);
+
+//New Colors
+@base:                      #363636; // text color
+@primary:                   #E87B14; // orange
+@secondary:                 #fdb913; // yellow
+@comp1:                     #9fc54d; // green
+@comp2:                     #ff4200; // rojo
+@grey-no-trans:             #ebebeb;
+@grey-section-bg:           #f1f1f1;
+@mild-grey:                 #f5f5f5;
+@base-80:                   fade(@base, 80%);
+@base-50:                   fade(@base, 50%); // #ababab
+@base-30:                   fade(@base, 30%); // #d7d7d7
+@base-20:                   fade(@base, 20%); // #d7d7d7
+@base-10:                   fade(@base, 10%); // #ededee
+@base-5:                    fade(@base, 5%); // #ededee
+@base-110:                  darken(@base, 6%); // #272727
+@light:                     #fff;
+@primary-20:                darken(@primary, 5%); // 20% light orange color
+@south-af-pink:             #fe9ecd; // tribute to south-african cricket team
+@light-grey-bg:             rgb(241, 241, 241);
+
+//Time period - Custom project colors
+@beige:               #f7d2d2;
+@lipstick:            #cc2229;
+@light-peach:         #ffd9bd;
+@dark-orange:         #c55300;
+@dark-cream:          #fed895;
+@pumpkin:             #d58700;
+@light-beige:         #fff2b7;
+@golden:              #e9c000;
+
+//Global
+@link-color:                @primary;
+@boxes-padding:             1.5rem; // 24px
+@boxes-border-radius:       8px;
+@boxes-shadow:              0 0 10px @base-20;
+@navbar-height:             48px;
+@height-avatar-header:      45px;
+@height-avatar-header-m:    40px;
+@link-hover-decoration:     none;
+@hr-border:                 @base-10;
+@display-custom-banner:     35px; // displayCustomBanner
+@header-margin:             4em; // displayCustomBanner - replace with 3em
+@main-nav-item-margin:      0;
+@font-size-base:            12px;
+@font-size-small:           10px;
+
+// Type
+@fw-light:                  300;
+@fw-regular:                400;
+@fw-bold:                   700;
+@state-info-text:           @primary;
+@link-hover:                @primary;
+
+// Grid
+@container-lg:              980px;
+@block-bottom-margin:       1.5em;
+
+// Modals
+@modal-sm:                  420px;
+@modal-lg:                  815px;
+@modal-md:                  670px;
+
+//== Components
+//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
+@padding-base-vertical:     8px;
+@padding-base-horizontal:   8px;
+
+@padding-large-vertical:    12px;
+@padding-large-horizontal:  16px;
+
+@padding-small-vertical:    3px;
+@padding-small-horizontal:  10px;
+
+@padding-xs-vertical:       0;
+@padding-xs-horizontal:     6px;
+
+@line-height-large:         1.3333333; // extra decimals for Win 8.1 Chrome
+@line-height-small:         1.5;
+
+@border-radius-base:        19px;
+@border-radius-large:       25px;
+@border-radius-small:       16px;
+@border-radius-xsmall:      10px;
+@border-radius-sm-corners:  6px;
+
+// Forms
+@input-border-radius:       @boxes-border-radius;
+@input-border-radius-large: @boxes-border-radius;
+@input-border-radius-small: @border-radius-small;
+
+
+@input-border:              @base-20;
+@input-color:               @base;
+@input-bg:                  @light;
+// @input-height-base:         (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-height-base:         40px;
+
+// Popovers
+@popover-arrow-width:       7px;
+
+// Tables
+@table-cell-padding:        12px;
+
+
+//== Buttons
+//## For each of Bootstrap's buttons, define text, background and border color.
+@btn-font-weight:                normal;
+
+@btn-default-color:              @primary;
+@btn-default-bg:                 transparent;
+@btn-default-border:             @primary;
+
+@btn-primary-color:              @light;
+@btn-primary-bg:                 @primary;
+@btn-primary-border:             @primary;
+
+@btn-secondary-color:            @light;
+@btn-secondary-bg:               @secondary;
+@btn-secondary-border:           @secondary;
+
+@btn-success-color:              @light;
+@btn-success-bg:                 @comp1;
+@btn-success-border:             @comp1;
+
+@btn-info-color:                 @base;
+@btn-info-bg:                    transparent;
+@btn-info-border:                @base-20;
+
+@btn-warning-color:              @light;
+
+@btn-danger-color:               @comp2;
+@btn-danger-bg:                  transparent;
+@btn-danger-border:              @comp2;
+
+@btn-datepicker-color:           @base;
+@btn-datepicker-bg:              @light;
+@btn-datepicker-border:          @light;
+
+@btn-gplus-color:                #C74B3C;
+@btn-facebook-color:             #3E5A92;
+
+
+// Cards
+@pro-view-background-90p: rgba(250, 250, 249, 0.9);
+@pro-view-background:  rgb(250, 250, 249);
+
+
+//XL Break point
+@screen-xl-min:                  1440px;
+
+// Media query definitions
+@iphone: ~"only screen and (max-width: 320px) ";
+@mobile: ~"only screen and (min-width: 480px) ";
+@alt-mobile: ~"only screen and (max-width: 480px) ";
+@tablet: ~"only screen and (min-width: 768px) ";
+//@desktop: ~"only screen and (min-width : 1039px)";
+@desktop: ~"only screen and (min-width: 992px) ";
+@desktop-xl: ~"only screen and (min-width: 1200px) ";
+@screen-md-min: 768px;
+@screen-sm-min: 480px;
+@screen-xs-min: 320px;
+@screen-lg-min: 992px;

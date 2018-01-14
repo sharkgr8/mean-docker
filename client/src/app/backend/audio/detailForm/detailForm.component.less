@@ -1,0 +1,26 @@
+div.error {
+  color: #e30613;
+  font-size: .8rem;
+  opacity: 1;
+  overflow-wrap: break-word;
+  margin-top: -19px;
+  min-height: 19px;
+  float: left;
+}
+// @foundation-theme: {
+//   container-border-bottom: 0px none
+// };
+
+// .ng2-tag-input.foundation-theme {
+//   .tag-input-theme(@foundation-theme);
+// }
+
+.tag-input {
+  .ng2-tag-input {
+    border: 0 none
+  }
+}
+
+:host /deep/ .ng2-tag-input, :host /deep/ .ng2-tag-input.ng2-tag-input--focused {
+  border-bottom: 0 none !important;
+}

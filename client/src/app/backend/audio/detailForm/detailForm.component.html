@@ -1,0 +1,111 @@
+<mz-modal #audioFormModal [fullscreen]="true" [options]="modalOptions">
+  <mz-modal-header>
+    <h4>{{ isEditing === false ? 'Add':'Edit'}} Audio <a mz-modal-close [style]="'float: right'"><i mz-icon-mdi
+      [align]="'right'"
+      [icon]="'close'"
+      [size]="'48px'"></i></a></h4>
+
+  </mz-modal-header>
+  <mz-modal-content>
+<div class="row">
+  <form class="col s12" [formGroup]="audioForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="row">
+      <mz-input-container class="col s12">
+        <input mz-input mz-validation required
+          id="input-name"
+          formControlName="name"
+          type="text"
+          [errorMessageResource]="errorMessageResources.name"
+          [label]="'Name of Audio'" />
+      </mz-input-container>
+    </div>
+    <div class="row">
+      <app-ishuploader *ngIf="!isEditing" [mode]="'single'" (onComplete)="fileAdded($event)" ></app-ishuploader>
+
+      <div class="col s12" *ngIf="isEditing" style="height:150px;">
+        <div class="row card horizontal">
+          <div class="col s2 card-image">
+            <app-audio-player [fileSrc] = "getPlaybackBaseUrl(audioId)"></app-audio-player>
+            <span ng-bind="audioFileError"></span>
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <h5>File Details</h5>
+              <p>{{audioForm.get('audioFile').value.name}}, {{audioForm.get('audioFile').value.size | formatFileSize}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <mz-input-container class="col s12">
+          <tag-input class="tag-input" formControlName="tags" [separatorKeyCodes]="[44]" [identifyBy]="'slug'" [displayBy]="'tag'">
+              <tag-input-dropdown [appendToBody]="true" [showDropdownIfEmpty]="true" [autocompleteObservable]='requestAutocompleteItems' [identifyBy]="'slug'" [displayBy]="'tag'"></tag-input-dropdown>
+          </tag-input>
+      </mz-input-container>
+    </div>
+
+    <div formGroupName="meta">
+      <div class="row">
+          <mz-datepicker-container class="col s12">
+              <i mz-icon-mdi mz-input-prefix
+                [icon]="'calendar'">
+              </i>
+              <input mz-datepicker
+                [label]="'Recorded On'"
+                id="datepicker"
+                formControlName="recordedOn"
+                [options]="{formatSubmit: 'yyyy-mm-dd', format: 'dddd, dd mmm, yyyy', selectMonths: true, selectYears: 10}"
+                placeholder="Select date recorded on"
+                type="text">
+          </mz-datepicker-container>
+      </div>
+      <div class="row">
+        <mz-input-container class="col s12">
+          <i mz-icon-mdi mz-input-prefix
+            [icon]="'map-marker'">
+          </i>
+          <input mz-input
+            id="input-recordedAt"
+            formControlName="recordedAt"
+            type="text"
+            placeholder="Enter the place where it is recorded"
+            [label]="'Recorded At'" />
+        </mz-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <mz-checkbox-container class="col s2">
+        <input mz-checkbox
+          id="checkbox-published"
+          formControlName="published"
+          type="checkbox"
+          [filledIn]="false"
+          [label]="'Publish it now?'">
+      </mz-checkbox-container>
+    </div>
+    <div class="row" style="margin-top: 1em">
+      <button type="submit" [disabled]="audioForm.pristine || audioForm.invalid" class="btn btn-success">Save</button> &nbsp;
+      <button type="reset" (click)="revert()" [disabled]="audioForm.pristine" class="btn btn-danger">Revert</button> &nbsp;
+      <button type="button" mz-button mz-modal-close>Close</button>
+
+      <button type="button" (click)="add()" *ngIf="isEditing===true"  class="btn btn-danger right yellow-text">Add User</button>
+     <button type="button" (click)="bottomSheetModal.open()" *ngIf="isEditing===true" class="btn btn-danger red right">Delete Audio</button>
+    </div>
+  </form>
+</div>
+</mz-modal-content>
+</mz-modal>
+<mz-modal #bottomSheetModal [fixedFooter]="true" [bottomSheet]="true" [options]="modalOptions">
+  <mz-modal-header>
+    Delete Confirmation
+  </mz-modal-header>
+  <mz-modal-content>
+    Are you sure about the deletion of the audio?
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button mz-button [flat]="true" mz-modal-close>Disagree</button>
+    <button mz-button [flat]="true" (click)="delete()" mz-modal-close>Agree</button>
+  </mz-modal-footer>
+</mz-modal>

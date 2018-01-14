@@ -1,0 +1,84 @@
+<div class="container">
+  <h3>Audio</h3>
+  <!-- Bootstrap Card -->
+  <div class="row" *ngIf="audio.length > 0">
+    <div class="col s12">
+      <mz-input-container>
+        <i mz-icon-mdi mz-input-prefix [icon]="'magnify'" [size]="small"></i>
+        <input mz-input id="search" placeholder="Type to filter the name column..." length="50" (keyup)="updateFilter($event)" type="text"
+        />
+      </mz-input-container>
+      <ngx-datatable #table class="material expandable" [columnMode]="'force'" [scrollbarH]="false" [rows]="audio" [headerHeight]="50"
+        [footerHeight]="50" [rowHeight]="40" [selectionType]="'single'" (activate)='onSelect($event)' [limit]="10">
+
+        <!-- Row Detail Template -->
+        <ngx-datatable-row-detail [rowHeight]="150" #myDetailRow (toggle)="onDetailToggle($event)">
+          <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+            <div class="col s12">
+              <div class="row card horizontal">
+                <div class="col s2 card-image">
+                  <app-audio-player [fileSrc]="getPlaybackBaseUrl(row._id)"></app-audio-player>
+                </div>
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <h5>File Details</h5>
+                    <p>{{row.audioFile.name}}, {{row.audioFile.size | formatFileSize}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ngx-datatable-row-detail>
+
+        <!-- Column Templates -->
+        <ngx-datatable-column [width]="50" [resizeable]="false" [sortable]="false" [draggable]="false" [canAutoResize]="false">
+          <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+            <a href="javascript:void(0)" [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded" title="Expand/Collapse Row"
+              (click)="toggleExpandRow(row)">
+            </a>
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column prop="name"></ngx-datatable-column>
+
+        <ngx-datatable-column prop="published" name="isPublished">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            <span class="hide-on-small-only">{{column.name}}</span>
+          </ng-template>
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <span class="hide-on-small-only">
+              <i mz-icon-mdi [icon]="value ? 'check' : 'close'" class="pub-check" [size]="'24px'">
+              </i>
+            </span>
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column prop="meta.recordedOn" name="Recorded On">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            <span class="hide-on-small-only">{{column.name}}</span>
+          </ng-template>
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <span class="hide-on-small-only">{{value | amDateFormat: 'DD-MM-YYYY h:mm:ss a'}}</span>
+          </ng-template>
+
+        </ngx-datatable-column>
+        <ngx-datatable-column prop="created_at" name="Created On">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            <span class="hide-on-small-only">{{column.name}}</span>
+          </ng-template>
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <span class="hide-on-small-only">{{value | amDateFormat: 'DD-MM-YYYY h:mm:ss a'}}</span>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </div>
+  <div [style.margin-right.px]="10" class="col-12 error" *ngIf="audio.length === 0">
+    Sorry! No Audio Created.
+  </div>
+  <div class="fixed-action-btn">
+    <a (click)='add()' class="btn-floating btn-large waves-effect waves-light orange">
+      <i mz-icon-mdi [icon]="'plus'" [size]="'36px'">Add</i>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<header>
+  <app-navbar [isLoggedIn]="isLoggedIn" [loggedInUsername]="name"></app-navbar>
+</header>
+
+<main>
+  <div class="container">
+    <div [style.margin-top.px]="10" class="row">
+      <div class="col s12 center-align">
+        <router-outlet (activate)='onActivate($event)'></router-outlet>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+</footer>

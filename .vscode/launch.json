@@ -1,0 +1,31 @@
+{
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "type": "node",
+                "request": "attach",
+                "name": "Attach to remote",
+                "address": "192.168.99.100",
+                "port": 9229,
+                "restart": true,
+                "localRoot": "${workspaceFolder}",
+                "remoteRoot": "E:\\angular2\\mean-docker\\server",
+                "protocol": "inspector"
+            },
+
+            {
+                "type": "chrome",
+                "request": "attach",
+                "name": "Attach to Chrome",
+                "port": 9222,
+                "webRoot": "${workspaceRoot}"
+            },
+            {
+                "type": "chrome",
+                "request": "launch",
+                "name": "Launch Chrome",
+                "url": "http://localhost:4200",
+                "webRoot": "${workspaceRoot}"
+            }
+        ]
+    }
