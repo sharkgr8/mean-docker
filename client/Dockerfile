@@ -1,7 +1,7 @@
 ### STAGE 1: Build ###
 
 # We label our stage as 'builder'
-FROM node:8-alpine as builder
+FROM node:10.4.0-alpine as builder
 
 ENV HOME=/usr/src/app/web
 RUN mkdir -p $HOME

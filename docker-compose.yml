@@ -32,10 +32,10 @@ services:
       - mongodata:/data/db
     ports:
       - "27017:27017" # specify port forewarding
-  # mongo-seed:
-  #   build: ./mongo-seed
-  #   links:
-  #     - mongodb
+  mongo-seed:
+    build: ./mongo-seed
+    links:
+      - mongodb
 volumes:
   mongodata:
   uploaddata:

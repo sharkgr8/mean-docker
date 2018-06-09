@@ -1,5 +1,5 @@
  # Create image based on the official Node 8.5 image from the dockerhub
-FROM node:9.2.1-alpine
+FROM node:10.4.0-alpine
 
 # Create a directory where our app will be placed
 RUN mkdir -p /usr/src/app/api
