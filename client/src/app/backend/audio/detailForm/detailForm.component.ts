@@ -11,7 +11,7 @@ import { Audio, Tag, AudioFile } from '../audio';
 import { AudioService } from '../audio.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AudioNameValidator } from '../../validators/duplicate-audioname-validator';
-import { MzBaseModal, MzModalComponent } from 'ng2-materialize';
+import { MzBaseModal, MzModalComponent } from 'ngx-materialize';
 
 @Component({
   selector: 'app-audio-form',
@@ -128,7 +128,7 @@ export class AudioFormComponent extends MzBaseModal implements OnInit {
       this.message = res.message ? res.message : 'Unknown Error';
       this.onUpdateForm.emit(this.message);
     });
-    this.modal.close();
+    this.modal.closeModal();
   }
 
   onSubmit() {
@@ -151,7 +151,7 @@ export class AudioFormComponent extends MzBaseModal implements OnInit {
         this.onUpdateForm.emit(this.message);
       });
     }
-    this.modal.close();
+    this.modal.closeModal();
   }
 
   fileAdded(fileObj) {

@@ -8,7 +8,7 @@ import {
   MzButtonModule,
   MzIconModule,
   MzIconMdiModule
-} from 'ng2-materialize';
+} from 'ngx-materialize';
 import { NavbarComponent } from './navbar.component';
 
 @NgModule({

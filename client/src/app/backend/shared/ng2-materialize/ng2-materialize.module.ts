@@ -12,7 +12,7 @@ import {
   MzToastModule,
   MzSpinnerModule,
   MzInjectionModule
-} from 'ng2-materialize';
+} from 'ngx-materialize';
 
 @NgModule({
   imports: [

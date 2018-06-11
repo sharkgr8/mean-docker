@@ -2,14 +2,13 @@ import { Component, OnInit, ComponentRef, ViewChild } from '@angular/core';
 import { AudioService } from './audio.service';
 import { config } from '../backend.config';
 import { Audio, Tag } from './audio';
-import { MzToastService, MzModalService } from 'ng2-materialize';
-import { MzInjectionService } from 'ng2-materialize/dist/shared/injection/injection.service';
+import { MzToastService, MzModalService, MzInjectionService } from 'ngx-materialize';
 import { AudioFormComponent } from './detailForm/detailForm.component';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { ROUTE_ANIMATION, ROUTE_ANIMATION_HOST } from '../shared/backend.routing.animation';
 
 // Import rxjs map operator
-import 'rxjs/add/operator/map';
+
 
 @Component({
   selector: 'app-audio-list',

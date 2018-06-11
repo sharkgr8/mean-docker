@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import { config } from '../backend.config';
 
 // Import rxjs map operator
-import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
   // Add one person to the API
   addPerson(name, age) {
     this.http.post(`${this.API}/adminusers`, { name, age })
-      .map(res => res.json())
+      .pipe(map(res => res.json()))
       .subscribe(() => {
         this.getAllPeople();
       });
@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
   // Get all users from the API
   getAllPeople() {
     this.http.get(`${this.API}/adminusers`)
-      .map(res => res.json())
+      .pipe(map(res => res.json()))
       .subscribe(people => {
         console.log(people);
         this.people = people;

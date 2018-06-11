@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { HttpInterceptor } from '../shared/services/http-interceptor';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/timeout';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+
+
 import { config } from '../backend.config';
 
 @Injectable()
@@ -25,7 +26,7 @@ export class AuthenticationService {
 
     login(username: string, password: string): Observable<boolean> {
         return this.http.post(`${this.API}/api/authenticate`, { username: username, password: password })
-            .map((response: Response) => {
+            .pipe(map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 const token = response.json() && response.json().token;
                 if (token) {
@@ -44,23 +45,23 @@ export class AuthenticationService {
                     // return false to indicate failed login
                     return false;
                 }
-            });
+            }));
     }
 
     getLoggedInUserName(): Observable<string> {
-      return Observable.of(this.loggedInUsername);
+      return of(this.loggedInUsername);
     }
 
     getLoggedInToken(): Observable<string> {
-      return Observable.of(this.token);
+      return of(this.token);
     }
 
     isLoggedIn(): Observable<boolean> {
-      return Observable.of(this.token ? true : false);
+      return of(this.token ? true : false);
     }
 
     isAdmin(): Observable<boolean> {
-      return Observable.of(this.token ? this.adminCheck : false);
+      return of(this.token ? this.adminCheck : false);
     }
 
     logout(): void {

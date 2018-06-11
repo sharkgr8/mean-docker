@@ -1,7 +1,8 @@
 import { AbstractControl,  AsyncValidatorFn, ValidationErrors } from '@angular/forms';
 import { AudioService } from '../audio/audio.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AudioNameValidator {
@@ -14,14 +15,14 @@ export class AudioNameValidator {
       if (username.length > 3 && (userValue != null && username !== userValue)) {
         return audioService
           .getAudioByName(control.value)
-          .map(
+          .pipe(map(
             response => {
               const result =  (response.json() != null) ? { checkDuplicateAudioName: true } : null;
               return result;
             }
-          );
+          ));
       } else {
-        return Observable.of(null);
+        return of(null);
       }
     };
   }

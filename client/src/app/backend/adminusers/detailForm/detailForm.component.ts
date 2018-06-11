@@ -4,8 +4,8 @@ import { AdminUserService } from '../admin-user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatchPassword } from '../../validators/password-validator';
 import { UsernameValidator } from '../../validators/duplicate-username-validator';
-import { Subscription } from 'rxjs/Subscription';
-import { MzBaseModal, MzModalComponent } from 'ng2-materialize';
+import { Subscription } from 'rxjs';
+import { MzBaseModal, MzModalComponent } from 'ngx-materialize';
 
 @Component({
   selector: 'app-adminusers-form',
@@ -174,7 +174,7 @@ export class AdminUsersFormComponent extends MzBaseModal implements OnInit, OnDe
         this.onUpdateForm.emit(this.message);
       }
     );
-    this.modal.close();
+    this.modal.closeModal();
   }
 
   onSubmit() {
@@ -204,6 +204,6 @@ export class AdminUsersFormComponent extends MzBaseModal implements OnInit, OnDe
         }
       );
     }
-    this.modal.close();
+    this.modal.closeModal();
   }
 }

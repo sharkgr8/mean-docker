@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Headers, Response, RequestOptions } from '@angular/http';
 import { HttpInterceptor } from '../shared/services/http-interceptor';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { config } from '../backend.config';
 import { AuthenticationService } from '../login/auth.service';
 import { Audio, Tag } from './audio';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AudioService {
@@ -58,7 +59,7 @@ export class AudioService {
     const url = this.API + '/tags/search/?name=' + encodeURIComponent(text);
     return this.http
         .get(url)
-        .map(data => data.json());
+        .pipe(map(data => data.json()));
   }
 
   getPlaybackBaseUrl(id: string): string {

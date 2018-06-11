@@ -1,3 +1,6 @@
+
+import { throwError as observableThrowError, Observable } from 'rxjs';
+import { timeout, catchError } from 'rxjs/operators';
 import {
   Http,
   Request,
@@ -7,12 +10,11 @@ import {
   XHRBackend
 } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 
 // operators
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/map';
+
+
+
 
 @Injectable()
 export class HttpInterceptor extends Http {
@@ -24,11 +26,11 @@ export class HttpInterceptor extends Http {
     url: string | Request,
     options?: RequestOptionsArgs
   ): Observable<Response> {
-    return super.request(url, options).timeout(3000).catch(this.handleError);
+    return super.request(url, options).pipe(timeout(3000), catchError(this.handleError));
   }
 
   public handleError = (error: Response) => {
     // Do messaging and error handling here
-    return Observable.throw(error);
+    return observableThrowError(error);
   }
 }

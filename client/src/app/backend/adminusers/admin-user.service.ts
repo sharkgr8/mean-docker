@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Response, RequestOptions } from '@angular/http';
 import { HttpInterceptor } from '../shared/services/http-interceptor';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { config } from '../backend.config';
 import { AuthenticationService } from '../login/auth.service';
 import { AdminUser } from './admin-user';

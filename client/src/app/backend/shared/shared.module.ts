@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2MaterializeModule } from './ng2-materialize/ng2-materialize.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
-import { MomentModule } from 'angular2-moment';
+import { MomentModule } from 'ngx-moment';
 import { HttpInterceptor } from './services/http-interceptor';
 import { FormatFileSizePipe } from '../ish-uploader/pipes/format-file-size.pipe';
 

@@ -91,7 +91,7 @@
       <button type="button" mz-button mz-modal-close>Close</button>
 
       <button type="button" (click)="add()" *ngIf="isEditing===true"  class="btn btn-danger right yellow-text">Add User</button>
-     <button type="button" (click)="bottomSheetModal.open()" *ngIf="isEditing===true" class="btn btn-danger red right">Delete Audio</button>
+     <button type="button" (click)="bottomSheetModal.openModal()" *ngIf="isEditing===true" class="btn btn-danger red right">Delete Audio</button>
     </div>
   </form>
 </div>

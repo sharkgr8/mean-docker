@@ -1,7 +1,8 @@
 import { AbstractControl,  AsyncValidatorFn, ValidationErrors } from '@angular/forms';
 import { AdminUserService } from '../adminusers/admin-user.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class UsernameValidator {
@@ -14,14 +15,14 @@ export class UsernameValidator {
       if (username.length > 3 && (userValue != null && username !== userValue)) {
         return userService
           .getUserfromUsername(control.value)
-          .map(
+          .pipe(map(
             response => {
               const result =  (response.json() != null) ? { checkDuplicateUsername: true } : null;
               return result;
             }
-          );
+          ));
       } else {
-        return Observable.of(null);
+        return of(null);
       }
     };
   }
